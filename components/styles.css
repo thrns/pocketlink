@@ -1,0 +1,38 @@
+/* Component-specific font styles */
+
+/* Ensure all components use Onest by default */
+* {
+  font-family:
+    var(--font-onest),
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+/* Default font weight classes use Onest */
+.font-normal,
+.font-regular {
+  font-family: var(--font-onest), sans-serif;
+  font-weight: 400;
+}
+
+.font-medium {
+  font-family: var(--font-onest), sans-serif;
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-family: var(--font-onest), sans-serif;
+  font-weight: 600;
+}
+
+.font-bold,
+.font-heavy {
+  font-family: var(--font-onest), sans-serif;
+  font-weight: 700;
+}

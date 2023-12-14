@@ -1,0 +1,411 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styling resets */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  --theme-background: #ffffff;
+  --theme-color: #ffffff;
+  --theme-text-color: #000000;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  background-color: var(--theme-background) !important;
+  background: var(--theme-background) !important;
+  color: var(--theme-text-color);
+}
+
+body {
+  font-family:
+    var(--font-onest),
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif;
+  overflow-x: hidden;
+  background-color: var(--theme-background) !important;
+  background: var(--theme-background) !important;
+}
+
+/* 
+ * Font Hierarchy Rules:
+ * - Body & Regular text: Onest (default)
+ */
+
+/* Default text is Onest */
+.font-onest {
+  font-family:
+    var(--font-onest),
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+/* Font weight defaults */
+.font-regular,
+.font-normal {
+  font-family: var(--font-onest), sans-serif;
+}
+
+/* Global font-medium class uses Onest by default */
+.font-medium {
+  font-family: var(--font-onest), sans-serif;
+  font-weight: 500;
+}
+
+/* Global font-semibold class uses Onest by default */
+.font-semibold {
+  font-family: var(--font-onest), sans-serif;
+  font-weight: 600;
+}
+
+/* Global font-bold class uses Onest by default */
+.font-bold,
+.font-heavy {
+  font-family: var(--font-onest), sans-serif;
+  font-weight: 700;
+}
+
+/* Ensure code elements use system monospace fonts */
+code,
+pre,
+kbd,
+samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Animation variables */
+    --duration: 40s;
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+    --shiny-width: 100%;
+  }
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .theme {
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+    --animate-shiny-text: shiny-text 8s infinite;
+    --animate-pulse: pulse var(--duration) ease-out infinite;
+    --animate-gradient: gradient 8s linear infinite;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Gradient text utility */
+.gradient-text {
+  @apply bg-gradient-to-r from-purple-600 to-violet-500 bg-clip-text text-transparent;
+}
+
+/* Marquee animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: var(
+    --animate-marquee,
+    marquee var(--duration, 40s) linear infinite
+  );
+}
+
+/* Additional marquee animations for all directions */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+@keyframes marquee-down {
+  0% {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left var(--duration, 40s) linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right var(--duration, 40s) linear infinite;
+}
+
+.animate-marquee-up {
+  animation: marquee-up var(--duration, 40s) linear infinite;
+}
+
+.animate-marquee-down {
+  animation: marquee-down var(--duration, 40s) linear infinite;
+}
+
+/* Pause on hover functionality */
+.group:hover .group-hover\:pause {
+  animation-play-state: paused !important;
+}
+
+/* Chat demo animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Button overrides */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgb(147, 51, 234);
+  outline-offset: 2px;
+}
+
+/* Custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-shadow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(147, 51, 234, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
+  }
+}
+
+.animate-pulse-shadow {
+  animation: pulse-shadow 2s infinite;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* Allow vertical scrollbar but hide horizontal */
+main {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Hide default scrollbar */
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+@theme inline {
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes shiny-text {
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      boxshadow: 0 0 0 0 var(--pulse-color);
+    }
+    50% {
+      boxshadow: 0 0 0 8px var(--pulse-color);
+    }
+  }
+  @keyframes gradient {
+    to {
+      background-position: var(--bg-size, 300%) 0;
+    }
+  }
+  @keyframes gradient {
+    to {
+      background-position: var(--bg-size, 300%) 0;
+    }
+  }
+}
+
+/* Additional utility classes for Marquee component */
+@layer utilities {
+  .animate-marquee {
+    animation: marquee var(--duration, 40s) linear infinite;
+  }
+
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration, 40s) linear infinite;
+  }
+}
+
+/* Add explicit non-layer marquee animations for production */
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 40s) linear infinite;
+}
+
+/* Ensure keyframes are available outside of theme */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+/* Simple fixes for marquee item containers */
+.marquee-item-container {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  position: relative;
+}
+
+.marquee-item-container button,
+.marquee-item-container a[role='button'] {
+  background-color: #000 !important;
+  color: white !important;
+}
+
+.marquee-item-container > div {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
