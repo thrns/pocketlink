@@ -1,0 +1,39 @@
+# kubernetes/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pocketlink
+  labels:
+    app: pocketlink
+spec:
+  replicas: 1 # Reduced to 1 for simplicity
+  selector:
+    matchLabels:
+      app: pocketlink
+  template:
+    metadata:
+      labels:
+        app: pocketlink
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
+      containers:
+        - name: pocketlink
+          image: pocketlink/pocketlink:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: '3000'
+            - name: NODE_ENV
+              value: 'production'
+            - name: HOSTNAME
+              value: '0.0.0.0'
+          resources:
+            requests:
+              cpu: '100m'
+              memory: '256Mi'
+            limits:
+              cpu: '500m'
+              memory: '512Mi'
+          # No probes for initial deployment
