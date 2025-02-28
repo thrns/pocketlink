@@ -1,0 +1,12 @@
+<svg width="144" height="144" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="144" height="144" rx="32" fill="#000000"/>
+  <g transform="translate(24, 24)">
+    <!-- Link chain icon -->
+    <path d="M38 48C38 40.268 44.268 34 52 34H60C67.732 34 74 40.268 74 48C74 55.732 67.732 62 60 62H52" stroke="white" stroke-width="6" stroke-linecap="round"/>
+    <path d="M52 74C52 81.732 45.732 88 38 88H30C22.268 88 16 81.732 16 74C16 66.268 22.268 60 30 60H38" stroke="white" stroke-width="6" stroke-linecap="round"/>
+    <path d="M38 60L52 48" stroke="white" stroke-width="6" stroke-linecap="round"/>
+    <!-- Pocket/container element -->
+    <rect x="12" y="18" width="72" height="54" rx="10" stroke="white" stroke-width="4" fill="none"/>
+    <circle cx="48" cy="45" r="5" fill="white"/>
+  </g>
+</svg>

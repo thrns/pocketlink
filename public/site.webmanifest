@@ -1,0 +1,26 @@
+{
+  "name": "Pocketlink - AI powered Creator Tool kit",
+  "short_name": "Pocketlink",
+  "description": "Automate your brand, grow your audience, and turn clicks into sales, all from one beautiful, customizable link.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#111111",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "categories": ["social", "productivity", "business"]
+}

@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="112" fill="#000000"/>
+  <g transform="translate(86, 86)">
+    <!-- Link chain icon -->
+    <path d="M134 170C134 142.386 156.386 120 184 120H210C237.614 120 260 142.386 260 170C260 197.614 237.614 220 210 220H184" stroke="white" stroke-width="20" stroke-linecap="round"/>
+    <path d="M184 260C184 287.614 161.614 310 134 310H108C80.3858 310 58 287.614 58 260C58 232.386 80.3858 210 108 210H134" stroke="white" stroke-width="20" stroke-linecap="round"/>
+    <path d="M134 210L184 170" stroke="white" stroke-width="20" stroke-linecap="round"/>
+    <!-- Pocket/container element -->
+    <rect x="42" y="64" width="256" height="192" rx="32" stroke="white" stroke-width="12" fill="none"/>
+    <circle cx="170" cy="160" r="16" fill="white"/>
+  </g>
+</svg>

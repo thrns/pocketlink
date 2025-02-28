@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- STATIC: Home Page -->
+  <url>
+    <loc>https://pocketlink.co/</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- STATIC: Features Section -->
+  <url>
+    <loc>https://pocketlink.co/features</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- STATIC: Templates under Features -->
+  <url>
+    <loc>https://pocketlink.co/features/templates</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.64</priority>
+  </url>
+
+  <!-- STATIC: Store under Features -->
+  <url>
+    <loc>https://pocketlink.co/features/store</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.64</priority>
+  </url>
+
+  <!-- STATIC: Blog under Features -->
+  <url>
+    <loc>https://pocketlink.co/features/blog</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.64</priority>
+  </url>
+
+  <!-- DYNAMIC: User Account Section - Could be generated from auth routes -->
+  <url>
+    <loc>https://pocketlink.co/user/login</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://pocketlink.co/user/signup</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- STATIC: Legal Section -->
+  <url>
+    <loc>https://pocketlink.co/privacy</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://pocketlink.co/terms</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.50</priority>
+  </url>
+
+
+  <!-- DYNAMIC: Additional Sections - Could be generated from feature pages -->
+
+  <url>
+    <loc>https://pocketlink.co/analytics</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://pocketlink.co/link-card</loc>
+    <lastmod>2025-02-05</lastmod>
+    <priority>0.50</priority>
+  </url>
+
+  <!-- DYNAMIC: Blog Posts - Could be generated from CMS or database -->
+  <!-- Example: 
+  <url>
+    <loc>https://pocketlink.co/blog/post-slug</loc>
+    <lastmod>[TIMESTAMP]</lastmod>
+    <priority>0.60</priority>
+  </url>
+  -->
+
+  <!-- DYNAMIC: User Profiles - Could be generated from public user data -->
+  <!-- Example:
+  <url>
+    <loc>https://pocketlink.co/profile/[username]</loc>
+    <lastmod>[TIMESTAMP]</lastmod>
+    <priority>0.70</priority>
+  </url>
+  -->
+
+</urlset>
