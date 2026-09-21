@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pocketlink — repository overview</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f5f7ff;
+        --muted: #9ca8c7;
+        --line: rgba(172, 189, 233, 0.18);
+        --panel: rgba(15, 23, 49, 0.84);
+        --violet: #9b7bff;
+        --cyan: #62e6e1;
+        --pink: #ff88c6;
+        --gold: #f7c86e;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        width: 1600px;
+        height: 900px;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 78% 21%, rgba(125, 91, 255, 0.25), transparent 31%),
+          radial-gradient(circle at 18% 88%, rgba(40, 212, 208, 0.12), transparent 33%),
+          linear-gradient(135deg, #070b18 0%, #0b1126 54%, #10173a 100%);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .canvas {
+        position: relative;
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 64px;
+        width: 100%;
+        height: 100%;
+        padding: 72px 82px 66px;
+        isolation: isolate;
+      }
+
+      .canvas::before {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image:
+          linear-gradient(rgba(152, 168, 214, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(152, 168, 214, 0.055) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(90deg, transparent, black 16%, black 84%, transparent);
+        content: "";
+      }
+
+      .intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+        padding-bottom: 14px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        margin-bottom: 30px;
+        color: var(--cyan);
+        font: 700 15px/1.1 ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 34px;
+        height: 1px;
+        background: var(--cyan);
+        box-shadow: 0 0 14px var(--cyan);
+        content: "";
+      }
+
+      h1 {
+        max-width: 660px;
+        margin: 0;
+        font-size: 86px;
+        font-weight: 760;
+        letter-spacing: -0.055em;
+        line-height: 0.94;
+      }
+
+      .gradient {
+        background: linear-gradient(110deg, #ffffff 10%, #cfc0ff 57%, #77e9e2 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lede {
+        max-width: 620px;
+        margin: 30px 0 0;
+        color: #d2d9ec;
+        font-size: 26px;
+        letter-spacing: -0.025em;
+        line-height: 1.3;
+      }
+
+      .subline {
+        max-width: 560px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 34px;
+      }
+
+      .chip {
+        border: 1px solid rgba(155, 123, 255, 0.42);
+        border-radius: 999px;
+        padding: 9px 14px;
+        color: #e8e1ff;
+        background: rgba(155, 123, 255, 0.1);
+        font: 600 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      .footnote {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 56px;
+        color: #7380a3;
+        font: 600 12px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .footnote span {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--pink);
+        box-shadow: 0 0 13px var(--pink);
+      }
+
+      .map-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-width: 0;
+      }
+
+      .map {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        width: 100%;
+        min-height: 640px;
+        padding: 26px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: linear-gradient(145deg, rgba(16, 25, 54, 0.86), rgba(10, 16, 37, 0.74));
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+
+      .map::before {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(1px);
+        content: "";
+      }
+
+      .map::before {
+        top: 24px;
+        right: 30px;
+        width: 94px;
+        height: 94px;
+        border: 1px solid rgba(98, 230, 225, 0.28);
+        box-shadow: 0 0 0 19px rgba(98, 230, 225, 0.04), 0 0 0 38px rgba(98, 230, 225, 0.025);
+      }
+
+      .map-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #7f8caf;
+        font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--cyan);
+        letter-spacing: 0.08em;
+      }
+
+      .status::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 12px var(--cyan);
+        content: "";
+      }
+
+      .map-body {
+        display: grid;
+        grid-template-columns: 0.86fr 1.2fr 0.86fr;
+        gap: 18px;
+        align-items: center;
+        min-width: 0;
+      }
+
+      .lane {
+        display: grid;
+        gap: 16px;
+        min-width: 0;
+      }
+
+      .lane.left { justify-items: end; }
+      .lane.right { justify-items: start; }
+
+      .node {
+        position: relative;
+        display: grid;
+        gap: 7px;
+        width: 100%;
+        max-width: 194px;
+        padding: 17px 18px;
+        border: 1px solid rgba(172, 189, 233, 0.2);
+        border-radius: 15px;
+        background: var(--panel);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
+      }
+
+      .lane.left .node::after,
+      .lane.right .node::before {
+        position: absolute;
+        top: 50%;
+        width: 21px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--violet));
+        content: "";
+      }
+
+      .lane.left .node::after { right: -22px; }
+      .lane.right .node::before { left: -22px; transform: rotate(180deg); }
+
+      .node strong {
+        color: #f5f7ff;
+        font-size: 15px;
+        letter-spacing: 0.005em;
+      }
+
+      .node small {
+        color: #8591af;
+        font-size: 12px;
+        letter-spacing: 0.01em;
+        line-height: 1.48;
+      }
+
+      .node .icon {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 9px;
+        color: #09101f;
+        background: var(--violet);
+        font: 800 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      .node.cyan .icon { background: var(--cyan); }
+      .node.pink .icon { background: var(--pink); }
+      .node.gold .icon { background: var(--gold); }
+
+      .core {
+        position: relative;
+        display: grid;
+        place-items: center;
+        justify-self: center;
+        width: 232px;
+        min-height: 264px;
+        padding: 22px 14px;
+        border: 1px solid rgba(155, 123, 255, 0.56);
+        border-radius: 22px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(155, 123, 255, 0.28), transparent 44%),
+          linear-gradient(145deg, rgba(25, 28, 70, 0.98), rgba(11, 19, 47, 0.96));
+        box-shadow: 0 0 0 7px rgba(155, 123, 255, 0.06), 0 0 38px rgba(155, 123, 255, 0.13);
+        text-align: center;
+      }
+
+      .core-logo {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        width: 82px;
+        height: 82px;
+        border-radius: 20px;
+        object-fit: cover;
+        mix-blend-mode: screen;
+        filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.24));
+      }
+
+      .core h2 {
+        position: relative;
+        z-index: 1;
+        margin: 16px 0 0;
+        font-size: 22px;
+        letter-spacing: -0.015em;
+      }
+
+      .core p {
+        position: relative;
+        z-index: 1;
+        max-width: 174px;
+        margin: 9px 0 0;
+        color: #b4bddd;
+        font-size: 11px;
+        letter-spacing: 0.012em;
+        line-height: 1.48;
+      }
+
+      .map-footer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .metric {
+        display: grid;
+        gap: 6px;
+        padding: 14px;
+        border: 1px solid rgba(172, 189, 233, 0.14);
+        border-radius: 14px;
+        background: rgba(4, 9, 23, 0.38);
+      }
+
+      .metric b {
+        color: #f4f6ff;
+        font-size: 13px;
+        letter-spacing: 0.015em;
+      }
+
+      .metric span {
+        color: #7e8bab;
+        font: 600 10px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="canvas" aria-label="Pocketlink engineering overview">
+      <section class="intro">
+        <div class="eyebrow">repository map · 2026</div>
+        <h1><span class="gradient">Pocketlink</span></h1>
+        <p class="lede">Creator pages, commerce, and AI-assisted layout generation in one Next.js application.</p>
+        <p class="subline">A visual guide to the public tenant surface, protected dashboard, API workflows, data clients, and external services found in this repository.</p>
+        <div class="stack" aria-label="Technology stack">
+          <span class="chip">Next.js App Router</span>
+          <span class="chip">Supabase</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">Gemini 2.0 Flash</span>
+          <span class="chip">Tailwind CSS</span>
+        </div>
+        <div class="footnote"><span></span>engineering overview · static code map</div>
+      </section>
+
+      <section class="map-wrap" aria-label="System map">
+        <div class="map">
+          <div class="map-label"><span>system surface</span><span class="status">routes + services</span></div>
+
+          <div class="map-body">
+            <div class="lane left">
+              <div class="node cyan"><div class="icon">↗</div><strong>Creator / visitor</strong><small>Public pages, sign-in, onboarding</small></div>
+              <div class="node pink"><div class="icon">◫</div><strong>Tenant host</strong><small>Subdomain or verified custom domain</small></div>
+            </div>
+
+            <div class="core">
+              <img class="core-logo" src="pocketlink-logo.png" alt="Pocketlink logo" />
+              <h2>Pocketlink</h2>
+              <p>Next.js route tree + shared React contexts + API handlers</p>
+            </div>
+
+            <div class="lane right">
+              <div class="node gold"><div class="icon">DB</div><strong>Data clients</strong><small>Supabase, Firebase, storage, analytics</small></div>
+              <div class="node cyan"><div class="icon">AI</div><strong>AI pipelines</strong><small>Resource → research → build → QA</small></div>
+            </div>
+          </div>
+
+          <div class="map-footer">
+            <div class="metric"><b>Dashboard</b><span>Editor · shop · analytics</span></div>
+            <div class="metric"><b>Commerce</b><span>Cart · checkout · payments</span></div>
+            <div class="metric"><b>Integrations</b><span>Social · email · domains</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
